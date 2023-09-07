@@ -1,9 +1,9 @@
  
  # Introduction to databases
  ***
-- A database is a structured collection of information or data stored in a computer system. It is designed to efficiently organize, manage, and retrieve data. Databases are used to store and access various types of data, such as customer information, product details, or records, making it easier to search, update, and analyze the information as needed. To interact with databases, businesses and individuals rely on Database Management Systems (DBMS), which are specialized software applications responsible for managing and controlling access to the database. DBMS provides tools and features for creating, modifying, and querying the data in a secure and organized manner, ensuring data integrity and enabling multiple users to work with the data simultaneously while maintaining consistency and security
+A database is a structured collection of information or data stored in a computer system. It is designed to efficiently organize, manage, and retrieve data. Databases are used to store and access various types of data, such as customer information, product details, or records, making it easier to search, update, and analyze the information as needed. To interact with databases, businesses and individuals rely on **Database Management Systems **(DBMS), which are specialized software applications responsible for managing and controlling access to the database. DBMS provides tools and features for creating, modifying, and querying the data in a secure and organized manner, ensuring data integrity and enabling multiple users to work with the data simultaneously while maintaining consistency and security
 
- #### Database type
+ ## Database type
 
 - Document-oriented, COBOL (IMS,IDMS)
 - Relational (SQL ,DB 2,Oracle)
@@ -12,9 +12,11 @@
 
 ***
 
- #### ACID
+ # ACID
  
-- Atomicity: if something operation return error all operation will return rollback.
+ in computer science, **ACID** (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity.
+ 
+- ** Atomicity** : if something operation return error all operation will return rollback.
 
 ```sql
 -- inital this transition
@@ -30,7 +32,7 @@ UPDATE tb SET atribute=false WHERE atribute=false
 COMMIT;
 ````
 
-- Consistency : if the foreign key has no reference, data should not be inserted and should not query completed.
+-  **Consistency** : if the foreign key has no reference, data should not be inserted and should not query completed.
 
 ``` sql 
 --inital this transiton
@@ -49,7 +51,7 @@ INSERT INTO Orders (order_id, customer_id, order_total) VALUES (102, 2, 300.00);
 COMMIT;
 ```
  
-- Isolation : if multiple users are trying to access a database and perform multiple transactions, should the database perform parallel transactions for each user after a commit.
+- ** Isolation** : if multiple users are trying to access a database and perform multiple transactions, should the database perform parallel transactions for each user after a commit.
 
 ```sql
 -- Set the isolation level to READ COMMITTED
@@ -113,3 +115,28 @@ COMMIT;
 -- Commit transaction T2
 COMMIT;
 ```
+
+- **Durability**:  ever data should percist in database after commit
+ 
+```sql
+-- inital this transition
+BEGIN TRANSACTION;
+ 
+-- insert value in there database
+INSERT INTO table_ (atribute_) VALUES (values_);
+  
+--commits values
+COMMIT;
+```
+
+***
+
+# ANSI / SPARC
+
+The **ANSI-SPARC Architecture** (American National Standards Institute, Standards Planning And Requirements Committee), is an abstract design standard for a database management system (DBMS), first proposed in 1975.
+
+![image](https://en.wikipedia.org/wiki/ANSI-SPARC_Architecture#/media/File:ANSI-SPARC_DB_model.jpg)
+
+- **External level (view) ** :  Inside the "External level"  layer, you'll find the interface, software, and access restrictions for the end user.
+- **Conceitual level (Schema)** : inside the "Conceitual level" , you'll find tables , sql query, source code  for developer.
+- **Intenal level(DBMS)** : nside the "internal level" , you'll find DBMS and archive system in core
