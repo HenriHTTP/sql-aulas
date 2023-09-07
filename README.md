@@ -55,7 +55,7 @@ COMMIT;
 -- Set the isolation level to READ COMMITTED
 
 -- READ UNCOMMITTED: 
--- In this isolation level, T1 can read uncommitted changes made by T2, and T2 can read uncommitted changes made by T1
+/* In this isolation level, T1 can read uncommitted changes made by T2, and T2 can read uncommitted changes made by T1 */
 
 SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 -- Start transaction T1
@@ -82,7 +82,7 @@ COMMIT;
 
 -- Set the isolation level to READ UNCOMMITTED
 -- READ COMMITTED: 
--- In this isolation level, transactions can only read committed changes made by other transactions.
+/* In this isolation level, transactions can only read committed changes made by other transactions. */
 SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 
 -- Start transaction T1
