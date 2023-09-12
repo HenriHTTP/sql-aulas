@@ -200,8 +200,9 @@ COMMIT;
 
 The **ANSI-SPARC Architecture** (American National Standards Institute, Standards Planning And Requirements Committee), is an abstract design standard for a database management system (DBMS), first proposed in 1975.
 
-![image](https://media.geeksforgeeks.org/wp-content/uploads/20200210171924/ansi-sparc.jpg)
 
+
+![image](./ANSI-SPARC_DB_model.jpg)
 - **External level (view)** :  Inside the "External level"  layer, you'll find the interface, software, and access restrictions for the end user.
 - **Conceitual level (Schema)** : inside the "Conceitual level" , you'll find tables , sql query, source code  for developer.
 - **Intenal level(DBMS)** : nside the "internal level" , you'll find DBMS and archive system in core
