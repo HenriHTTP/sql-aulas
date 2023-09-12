@@ -11,7 +11,72 @@ A database is a structured collection of information or data stored in a compute
 - NoSQL (MongoDB)
 
 ***
+# Transaction
 
+Transactions are operations performed on a database that take the database from one consistent state to another consistent one.They are used to ensure the integrity and consistency of data in a relational database, following the ACID concept 
+## Transaction types
+
+- **Commit** :These are operations that, after commit, changes become permanent and visible to other users
+
+```sql
+-- inital this transition
+BEGIN TRANSACTION; 
+
+-- starting operations read values in colums
+UPDATE tables SET columns= values_ WHERE condiction;
+
+-- starting operations insert values in colums
+INSERT INTO tables (colum1, colum2) VALUES (value1, value2);
+
+-- Commit operation
+COMMIT;
+
+```
+
+- **Rollback**: This will revert all changes made to the transaction to the state before the transaction.
+
+```sql
+-- inital this transition
+BEGIN TRANSACTION;
+
+-- starting operations read values in colums
+UPDATE tables SET columns = values_ WHERE condiction;
+
+-- err or condition require rollback
+
+ -- Return transition not commit
+ROLLBACK;
+
+```
+
+- **Savepoint** : is a markup within a transaction that allows you to return to a specific point within the transaction.
+
+```sql
+BEGIN TRANSACTION;
+-- Perform some update operations
+SAVEPOINT my_savepoint; -- Create a savepoint
+-- More update operations
+-- Something goes wrong, and you decide to roll back to the savepoint
+ROLLBACK TO my_savepoint; -- Return to the savepoint
+-- Continue with the remaining operations
+COMMIT;
+
+```
+
+- **Autocommit**: not's  require command  **COMMIT** and  **BEGIN TRANSACTION** for starting a new transaction 
+
+```sql
+-- Autocommit is enabled by default
+-- Each statement is a transaction
+INSERT INTO table_ (column) VALUES (value1);
+UPDATE table SET column = value2 WHERE condition;
+-- Changes are automatically committed
+
+```
+
+
+***
+ 
  # ACID
  
  in computer science, **ACID** (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity.
@@ -54,7 +119,7 @@ COMMIT;
 - ** Isolation** : if multiple users are trying to access a database and perform multiple transactions, should the database perform parallel transactions for each user after a commit.
 
 ```sql
--- Set the isolation level to READ COMMITTED
+-- Set the isolation level to READ UNCOMMITTED
 
 -- READ UNCOMMITTED: 
 /* 
@@ -86,7 +151,7 @@ COMMIT;
 
 ```sql
 
--- Set the isolation level to READ UNCOMMITTED
+-- Set the isolation level to READ COMMITTED
 -- READ COMMITTED: 
 /* 
 In this isolation level,
@@ -140,3 +205,11 @@ The **ANSI-SPARC Architecture** (American National Standards Institute, Standard
 - **External level (view)** :  Inside the "External level"  layer, you'll find the interface, software, and access restrictions for the end user.
 - **Conceitual level (Schema)** : inside the "Conceitual level" , you'll find tables , sql query, source code  for developer.
 - **Intenal level(DBMS)** : nside the "internal level" , you'll find DBMS and archive system in core
+***
+
+# Restrictions
+
+- **Domain** : Values types (**null, interger , string , boolean**).
+- **Reference** :  the data has should **Consistency**
+- **User**: user **business rules**
+***
